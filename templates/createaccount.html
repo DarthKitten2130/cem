@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+</head>
+<body>
+    <form method='post'>
+        <label for="id">Enter your college ID</label><br>
+        <input type="text" id="id" name="id" required><br>
+        <label for="name">Enter your name</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Enter your email</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="phone">Enter your phone number</label><br>
+        <input type="tel" id="phone" name="phone" required><br>
+        <label for="branch">Enter your branch</label><br>
+        <select name="branch" id="branch" required>
+            <option value="cs">Computer Science</option>
+            <option value="ai">Artifical Intelligence</option>
+            <option value="ec">Electronics and Commmunications Engineering</option>
+            <option value="eee">Electcrical Engineering</option>
+            <option value="me">Mechanical Engineering</option>
+            <option value="ce">Civil Engineering</option>
+            <option value="ch">Chemical Engineering</option>
+            <option value="msc">MSC</option>
+        </select><br>
+        <label for="password">Create a password</label><br>
+        <input type="password" name="password" id="password" required><br><br>
+
+        <input type="submit" name="submit" id="submit">
+    </form>
+
+    <p>Already have an account? <a href="/signin">Sign In</a></p>
+</body>
+</html>
