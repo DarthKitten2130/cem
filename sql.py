@@ -36,23 +36,23 @@ def get_user(id):
     return user
 
 
-def account_verification(username, password):
+def account_verification(id, password):
     global cursor
     cursor.execute(
-        f'SELECT username,password from users where username = "{username}"')
+        f'SELECT id,password from users where id = "{id}"')
     results = cursor.fetchall()
     acc = {}
     for result in results:
         acc[result[0]] = result[1]
 
     # Account Does Not Exist
-    if username not in [x[0] for x in results]:
+    if id not in [x[0] for x in results]:
         return 'doesNotExist'
 
     # Entered the Wrong Password
-    elif acc[username] != password:
+    elif acc[id] != password:
         return 'wrongPassword'
 
     # Verified
-    elif acc[username] == password:
+    elif acc[id] == password:
         return 'verified'

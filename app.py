@@ -1,8 +1,9 @@
 from flask import Flask
-from flask import render_template, request, redirect, url_for,session
+from flask import render_template, request, redirect, url_for, session, templating
 from sql import *
 
 app = Flask(__name__)
+app.secret_key = 'ROOT'
 
 
 @app.route('/')
@@ -13,18 +14,23 @@ def home():
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
-    create_table()
+    alert_message = ""
     if request.method == 'POST':
-        id = request.form['id']
-        password = request.form['password']
+        match account_verification(request.form['id'],
+                                   request.form['password']):
 
-        user = get_user(id)
-        if user and user[5] == password:
-            return redirect(url_for('home'))
-        else:
-            return render_template('signin.html', error='Invalid credentials')
+            case 'doesNotExist':
+                alert_message = "Sorry, your account does not exist, please create one."
 
-    return render_template('signin.html')
+            case 'wrongPassword':
+                alert_message = "The password you entered is incorrect, please try again."
+
+            case 'verified':
+                session['id'] = request.form['id']
+                session['password'] = request.form['password']
+                return redirect('/')
+
+    return templating.render_template("signin.html", message=alert_message)
 
 
 @app.route('/createaccount', methods=['GET', 'POST'])
@@ -40,7 +46,7 @@ def create_account():
 
         insert_user(id, name, email, phone, branch, password)
 
-        return redirect(url_for('home'))
+        return redirect(url_for('signin'))
 
     return render_template('createaccount.html')
 

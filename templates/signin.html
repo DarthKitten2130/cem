@@ -6,7 +6,7 @@
     <title>Sign In</title>
 </head>
 <body>
-    <form action="">
+    <form method="post">
         <label for="id">College ID</label><br>
         <input type="text" name="id" id="id"><br>
         <label for="password">Password</label><br>
@@ -16,5 +16,11 @@
 
     Don't have an account?
     <a href="/createaccount">create account</a>
+
+    <script>
+        var alert_message = "{{message}}"
+
+        if (alert_message) { alert(alert_message) }
+    </script>
 </body>
 </html>
