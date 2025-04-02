@@ -94,3 +94,30 @@ def insert_reg(event_id, user_id):
         VALUES ('{event_id}', '{user_id}')
     ''')
     sqliteConnection.commit()
+
+
+def get_reg(event_id):
+    # Get all events
+    cursor.execute(f'''
+        SELECT * FROM reg WHERE event_id = {event_id}
+    ''')
+    events = cursor.fetchall()
+    return events
+
+
+def insert_event(name, date, time, location, description, dept, type, contact):
+    # Insert an event
+    cursor.execute(f'''
+        INSERT INTO events (name, date, time, location, description, dept, type, contact)
+        VALUES ('{name}', '{date}', '{time}', '{location}', '{description}', '{dept}', '{type}', '{contact}')
+    ''')
+    sqliteConnection.commit()
+
+
+def get_event(event_id):
+    # Get an event
+    cursor.execute(f'''
+        SELECT * FROM events WHERE id = {event_id}
+    ''')
+    event = cursor.fetchone()
+    return event

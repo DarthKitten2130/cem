@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template, request, redirect, url_for, session, templating
+from flask import Flask, render_template, request, redirect, url_for, session, templating
 from sql import *
 
 app = Flask(__name__)
@@ -51,14 +50,33 @@ def create_account():
     return render_template('createaccount.html')
 
 
+@app.route('/logout')
+def logout():
+    session.pop('id', None)
+    session.pop('password', None)
+    return redirect('/')
+
+
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    create_table()
+    user = get_user(session['id'])
+    return render_template('profile.html', user=user)
+
+
 @app.route('/events', methods=['GET', 'POST'])
 def events():
-    if request.method == 'POST':
-        event = request.form['event']
-        # Handle the event here
-        return redirect(url_for('events'))
+    create_table()
+    events = get_events()
+    return render_template('events.html', events=events)
 
-    return render_template('events.html')
+
+@app.route('events/<eventid>', methods=['GET', 'POST'])
+def event(eventid):
+    create_table()
+    insert_reg(eventid, session['id'])
+    event = get_event(eventid)
+    return render_template('desc.html', event=event, eventid=eventid)
 
 
 if __name__ == '__main__':
