@@ -51,5 +51,15 @@ def create_account():
     return render_template('createaccount.html')
 
 
+@app.route('/events', methods=['GET', 'POST'])
+def events():
+    if request.method == 'POST':
+        event = request.form['event']
+        # Handle the event here
+        return redirect(url_for('events'))
+
+    return render_template('events.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
