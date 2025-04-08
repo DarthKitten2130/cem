@@ -7,8 +7,13 @@ app.secret_key = 'ROOT'
 
 @app.route('/')
 def home():
+    name = ""
     create_table()
-    return render_template('index.html')
+    if 'id' in session:
+        x = get_user(session['id'])
+        name = x[1]
+    session['name'] = name
+    return render_template('index.html', name=name)
 
 
 @app.route('/signin', methods=['GET', 'POST'])
@@ -50,8 +55,8 @@ def create_account():
     return render_template('createaccount.html')
 
 
-@app.route('/logout')
-def logout():
+@app.route('/signout')
+def signout():
     session.pop('id', None)
     session.pop('password', None)
     return redirect('/')
@@ -71,7 +76,7 @@ def events():
     return render_template('events.html', events=events)
 
 
-@app.route('events/<eventid>', methods=['GET', 'POST'])
+@app.route('/events/<eventid>', methods=['GET', 'POST'])
 def event(eventid):
     create_table()
     insert_reg(eventid, session['id'])

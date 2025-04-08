@@ -6,8 +6,20 @@
     <title>Home</title>
 </head>
 <body>
+    {% if name == "" %}
     <a href="./signin"><button style="float: right;">Sign In</button></a>
+    {% else %}
+    <a href="./signout"><button style="float: right;">Sign Out</button></a>
+    {% endif %}
     <h1>SBJJ Institute of Technology</h1>
     <h1>Event Manager</h1>
+    {% if name != "" %}
+    <h2>Hello, {{name}}</h2>
+    {% else %}
+    <h2>Hello, Guest</h2>
+    {% endif %}
+
+    <a href="./events"><button>Check Out The Events</button></a>
+
 </body>
 </html>

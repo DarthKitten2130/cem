@@ -15,7 +15,8 @@ def create_table():
             branch TEXT NOT NULL,
             password TEXT NOT NULL
         );
-        
+    ''')
+    cursor.execute('''
         CREATE TABLE IF NOT EXISTS events (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
@@ -27,16 +28,15 @@ def create_table():
             type TEXT NOT NULL,
             contact TEXT,
             CONSTRAINT fk_contact FOREIGN KEY (contact) REFERENCES users(id)
-            );
-                   
+            );''')
+    cursor.execute('''         
         CREATE TABLE IF NOT EXISTS reg (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             event_id INTEGER NOT NULL,
             user_id TEXT NOT NULL,
             FOREIGN KEY (event_id) REFERENCES events(id),
             FOREIGN KEY (user_id) REFERENCES users(id)
-        );
-    ''')
+        );''')
     sqliteConnection.commit()
 
 
@@ -51,7 +51,7 @@ def insert_user(id, name, email, phone, branch, password):
 def get_user(id):
     # Get a user
     cursor.execute(f'''
-        SELECT * FROM users WHERE id = {id}
+        SELECT * FROM users WHERE id = "{id}"
     ''')
     user = cursor.fetchone()
     return user
@@ -99,7 +99,7 @@ def insert_reg(event_id, user_id):
 def get_reg(event_id):
     # Get all events
     cursor.execute(f'''
-        SELECT * FROM reg WHERE event_id = {event_id}
+        SELECT * FROM reg WHERE event_id = "{event_id}"
     ''')
     events = cursor.fetchall()
     return events
@@ -117,7 +117,7 @@ def insert_event(name, date, time, location, description, dept, type, contact):
 def get_event(event_id):
     # Get an event
     cursor.execute(f'''
-        SELECT * FROM events WHERE id = {event_id}
+        SELECT * FROM events WHERE id = "{event_id}"
     ''')
     event = cursor.fetchone()
     return event
