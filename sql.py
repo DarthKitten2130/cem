@@ -10,10 +10,11 @@ def create_table():
         CREATE TABLE IF NOT EXISTS users (
             id TEXT PRIMARY KEY,
             name TEXT NOT NULL,
-            email TEXT NOT NULL,
-            phone TEXT NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            phone TEXT UNQIUE NOT NULL,
             branch TEXT NOT NULL,
-            password TEXT NOT NULL
+            password TEXT NOT NULL,
+            role TEXT NOT NULL DEFAULT 'member'
         );
     ''')
     cursor.execute('''
@@ -27,7 +28,7 @@ def create_table():
             dept TEXT,
             type TEXT NOT NULL,
             contact TEXT,
-            CONSTRAINT fk_contact FOREIGN KEY (contact) REFERENCES users(id)
+            CONSTRAINT fk_contact FOREIGN KEY (contact) REFERENCES users(phone)
             );''')
     cursor.execute('''         
         CREATE TABLE IF NOT EXISTS reg (

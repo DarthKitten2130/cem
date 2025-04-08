@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="post">
+        <label for="name">Event Name</label><br>
+        <input type="text" name="name" id="name"><br><br>
+        <label for="date">Event Date</label><br>
+        <input type="date" name="date" id="date"><br><br>
+        <label for="time">Time of Event</label><br>
+        <input type="time" name="time" id="time"><br><br>
+        <label for="location">Event Location</label><br>
+        <input type="text" name="location" id="location"><br><br>
+        <label for="description">Event Description</label><br>
+        <textarea name="description" id="description" cols="30" rows="10"></textarea><br><br>
+        <label for="type">Event Type</label>
+        <select name="type" id="type">
+            <option value="technical">Technical</option>
+            <option value="non-technical">Non-Technical</option>
+            <option value="cultural">Cultural</option>
+            <option value="sports">Sports</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

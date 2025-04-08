@@ -10,8 +10,13 @@ def home():
     name = ""
     create_table()
     if 'id' in session:
-        x = get_user(session['id'])
-        name = x[1]
+        try:
+            x = get_user(session['id'])
+            name = x[1]
+            session['dept'] = x[4]
+            session['phone'] = x[3]
+        except TypeError:
+            pass
     session['name'] = name
     return render_template('index.html', name=name)
 
@@ -82,6 +87,26 @@ def event(eventid):
     insert_reg(eventid, session['id'])
     event = get_event(eventid)
     return render_template('desc.html', event=event, eventid=eventid)
+
+
+@app.route('/createevent', methods=['GET', 'POST'])
+def create_event():
+    create_table()
+    if request.method == 'POST':
+        name = request.form['name']
+        date = request.form['date']
+        time = request.form['time']
+        location = request.form['location']
+        desc = request.form['description']
+        eventtype = request.form['type']
+
+        desc = request.form['event_desc']
+        insert_event(name, date, time, location, desc,
+                     session['dept'], eventtype,)
+
+        return redirect(url_for('events'))
+
+    return render_template('createevent.html')
 
 
 if __name__ == '__main__':
