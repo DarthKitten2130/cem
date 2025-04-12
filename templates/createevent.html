@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="post">
+    <form method="post" enctype="multipart/form-data">
         <label for="name">Event Name</label><br>
         <input type="text" name="name" id="name"><br><br>
         <label for="date">Event Date</label><br>
@@ -23,7 +23,9 @@
             <option value="non-technical">Non-Technical</option>
             <option value="cultural">Cultural</option>
             <option value="sports">Sports</option>
-        </select>
+        </select><br><br>
+        <label for="image">Image</label>
+        <input type="file" name="image" id="image"><br><br>
         <br><br>
         <input type="submit" value="Submit">
     </form>

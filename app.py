@@ -99,10 +99,10 @@ def create_event():
         location = request.form['location']
         desc = request.form['description']
         eventtype = request.form['type']
-
-        desc = request.form['event_desc']
+        image = request.files['image']
+        image.save('static/images/' + image.filename)
         insert_event(name, date, time, location, desc,
-                     session['dept'], eventtype,)
+                     session['dept'], eventtype, session['phone'], f"images/{image.filename}")
 
         return redirect(url_for('events'))
 

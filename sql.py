@@ -28,6 +28,7 @@ def create_table():
             dept TEXT,
             type TEXT NOT NULL,
             contact TEXT,
+            image TEXT,
             CONSTRAINT fk_contact FOREIGN KEY (contact) REFERENCES users(phone)
             );''')
     cursor.execute('''         
@@ -106,11 +107,11 @@ def get_reg(event_id):
     return events
 
 
-def insert_event(name, date, time, location, description, dept, type, contact):
+def insert_event(name, date, time, location, description, dept, type, contact, image):
     # Insert an event
     cursor.execute(f'''
-        INSERT INTO events (name, date, time, location, description, dept, type, contact)
-        VALUES ('{name}', '{date}', '{time}', '{location}', '{description}', '{dept}', '{type}', '{contact}')
+        INSERT INTO events (name, date, time, location, description, dept, type, contact,image)
+        VALUES ('{name}', '{date}', '{time}', '{location}', '{description}', '{dept}', '{type}', '{contact}','{image}')
     ''')
     sqliteConnection.commit()
 

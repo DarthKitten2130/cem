@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>{{ event[1] }}</h1>
+    <h2>Date: {{ event[2] }}, Time: {{ event[3] }}</h2>
+    <h3>Location : {{ event[4] }}</h3>
+
+    {{ event[5] }} <br><br>
+
+    <img src="{{url_for('static',filename = event[9])}}">
 </body>
 </html>

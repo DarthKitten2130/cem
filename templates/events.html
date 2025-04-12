@@ -6,24 +6,29 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        table,th,td,tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
     <table>
-        <thead>
             <tr>
                 <th>Event Name</th>
-                <th>Event Date</th>
-                <th>Event Location</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Link</th>
             </tr>
-        </thead>
-        <tbody>
             {% for event in events %}
             <tr>
-                <td>{{ event.name }}</td>
-                <td>{{ event.date }}</td>
-                <td>{{ event.location }}</td>
-                <td><a href="./events/{{event.id}}">Link</a></td>
+                <td>{{ event[1] }}</td>
+                <td>{{ event[2] }}</td>
+                <td>{{ event[3] }}</td>
+                <td>{{ event[4] }}</td>
+                <td><a href="./events/{{event[0]}}">Link</a></td>
             </tr>
             {% endfor %}
-        </tbody>
     </table>
 </body>
 </html>
