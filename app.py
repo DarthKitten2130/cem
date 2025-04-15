@@ -109,5 +109,12 @@ def create_event():
     return render_template('createevent.html')
 
 
+@app.route('/events/<eventid>/register', methods=['GET', 'POST'])
+def register(eventid):
+    insert_reg(eventid, session['id'])
+    print(get_reg("1"))
+    return render_template('reg.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
