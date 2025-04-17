@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hell's Kitchen Events</title>
+  <style>
+    body {
+      background-image: url("fire.jpeg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      color: #fff5f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+      background-color: rgba(80, 0, 0, 0.9);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      height: 50px;
+    }
+
+    .nav-item {
+      margin: 0 15px;
+      transition: all 0.6s ease;
+    }
+
+    .nav-item a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 6px 12px;
+    }
+
+    .nav-item[data-side="left"],
+    .nav-item[data-side="right"] {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 2;
+    }
+
+    #nav-jdtimes a {
+      font-size: 28px;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 0 0 5px #f33, 0 0 10px #f33, 0 0 20px #f33;
+      color: #ff3d00;
+      text-decoration: none;
+    }
+
+    .navbar.scrolled .nav-center {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+
+    .navbar.scrolled .nav-item[data-side="left"] {
+      transform: translateX(-250px);
+    }
+
+    .navbar.scrolled .nav-item[data-side="right"] {
+      transform: translateX(250px);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(80, 0, 0, 0.95);
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(255, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(255, 80, 80, 0.5);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .header {
+      width: 100%;
+      border-radius: 5px;
+      background-color: rgba(255, 0, 0, 0.6);
+      height: auto;
+      padding-left: 20px;
+      padding-top: 3px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+
+    .top {
+      font-family: 'Courier New', Courier, monospace;
+      color: white;
+      font-size: 85px;
+      text-shadow: 0 0 10px #f00, 0 0 20px #f00;
+      margin-bottom: 10px;
+    }
+
+    .top2 {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      color: white;
+      font-size: 24px;
+      font-weight: 300;
+      text-shadow: 0 0 5px #ffcccc;
+    }
+
+    .events-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+    }
+
+    fieldset {
+      width: 250px;
+      background-color: rgba(255, 0, 0, 0.1);
+      border: 2px solid #FF5733;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 60, 0, 0.6);
+      padding: 20px;
+      text-align: center;
+    }
+
+    fieldset img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    fieldset h3 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #ad0000;
+    }
+
+    fieldset p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    fieldset button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff3b3b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    fieldset button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li class="nav-item" data-side="left"><a href="home">HOME</a></li>
+      <li class="nav-item" data-side="left"><a href="contact-us">CONTACT US</a></li>
+      <li class="nav-item" data-side="left"><a href="Team">TEAM</a></li>
+      <li class="nav-item" data-side="left"><a href="Sponsor">SPONSORS</a></li>
+    
+      <li class="nav-center" id="nav-jdtimes"><a href="#">IGNITIA</a></li>
+    
+      <li class="nav-item dropdown" data-side="right">
+        <a href="#">EVENTS</a>
+        <div class="dropdown-content">
+          <a href="mng-ev">Managerial</a>
+          <a href="tech-ev">Technical</a>
+          <a href="Hellskitchen">Hell's Kitchen</a>
+          <a href="wrkshp">Workshops</a>
+          <a href="carshow">Car Show</a>
+        </div>
+      </li>
+      <li class="nav-item" data-side="right"><a href="Signin">LOGIN</a></li>
+      <li class="nav-item" data-side="right"><a href="CreateAcc">SIGN UP</a></li>
+    </ul>
+  </nav>
+
+  <div class="header">
+    <h1 class="top">Hell's Kitchen</h1>
+    <h2 class="top2">Fire up the flavors, ignite your passion</h2>
+  </div>
+
+  <div class="events-container">
+    <fieldset>
+      <img src="{{url_for('static',filename='images/icecream.jpg')}}" alt="Dessert Duel Image">
+      <h3>Dessert Duel</h3>
+      <p>Create a mouth-watering dessert masterpiece using mystery ingredients.</p>
+      <button>Register</button>
+    </fieldset>
+    <fieldset>
+      <img src="{{url_for('static',filename='images/maincourse.jpg')}}" alt="Main Course Madness Image">
+      <h3>Main Course Madness</h3>
+      <p>Whip up a restaurant-quality main dish judged on taste and presentation.</p>
+      <button>Register</button>
+    </fieldset>
+    <fieldset>
+      <img src="{{url_for('static',filename='images/cheese.jpeg')}}" alt="Sidekick Showdown Image">
+      <h3>Starter Showdown</h3>
+      <p>Craft the perfect side dish that complements and impresses.</p>
+      <button>Register</button>
+    </fieldset>
+  </div>
+
+  <script>
+    const header = document.querySelector('.header');
+    const navbar = document.querySelector('.navbar');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        navbar.classList.toggle('scrolled', !entry.isIntersecting);
+      },
+      {
+        root: null,
+        threshold: 0.1
+      }
+    );
+
+    observer.observe(header);
+  </script>
+</body>
+</html>
