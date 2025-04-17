@@ -46,6 +46,11 @@ def team():
     return render_template('Team.html')
 
 
+@app.route('/contact')
+def contact():
+    return render_template('contact-us.html')
+
+
 @app.route('/Signin', methods=['GET', 'POST'])
 def signin():
     alert_message = ""

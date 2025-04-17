@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact Us - JD Times</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-image:  url({{url_for('static', filename='images/BlackImage.jpg')}});
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      color: white;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      position: relative;
+    }
+
+    .nav-item {
+      margin: 0 15px;
+      transition: all 0.6s ease;
+    }
+
+    .nav-item a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 6px 12px;
+    }
+
+    .nav-item[data-side="left"],
+    .nav-item[data-side="right"] {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 2;
+    }
+
+    #nav-jdtimes a {
+      font-size: 28px;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f;
+      color: #00f;
+      text-decoration: none;
+    }
+
+    .navbar.scrolled .nav-center {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+
+    .navbar.scrolled .nav-item[data-side="left"] {
+      transform: translateX(-250px);
+    }
+
+    .navbar.scrolled .nav-item[data-side="right"] {
+      transform: translateX(250px);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.9);
+      min-width: 160px;
+      border-radius: 5px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 12px 16px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(0, 0, 255, 0.4);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .header {
+      background-color: rgba(0, 0, 255, 0.421);
+      padding: 20px;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    .top {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 70px;
+      color: white;
+      text-shadow: 0 0 10px #00f, 0 0 20px #00f;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 40px 20px;
+      gap: 40px;
+    }
+
+    .contact-form, .contact-info {
+      background-color: rgba(0, 0, 255, 0.2);
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 500px;
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-form h2, .contact-info h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #fff;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form label {
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .contact-form button {
+      padding: 10px;
+      font-size: 18px;
+      background-color: #00f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #0055ff;
+    }
+
+    .contact-info p {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.05);
+      font-size: 16px;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li class="nav-item" data-side="left"><a href="home">HOME</a></li>
+      <li class="nav-item" data-side="left"><a href="contact-us">CONTACT US</a></li>
+      <li class="nav-item" data-side="left"><a href="Team">TEAM</a></li>
+      <li class="nav-item" data-side="left"><a href="Sponsor">SPONSORS</a></li>
+    
+      <li class="nav-center" id="nav-jdtimes"><a href="#">IGNITIA</a></li>
+    
+      <li class="nav-item dropdown" data-side="right">
+        <a href="#">EVENTS</a>
+        <div class="dropdown-content">
+          <a href="mng-ev">Managerial</a>
+          <a href="tech-ev">Technical</a>
+          <a href="Hellskitchen">Hell's Kitchen</a>
+          <a href="wrkshp">Workshops</a>
+          <a href="carshow">Car Show</a>
+        </div>
+      </li>
+      <li class="nav-item" data-side="right"><a href="Signin">LOGIN</a></li>
+      <li class="nav-item" data-side="right"><a href="CreateAcc">SIGN UP</a></li>
+    </ul>
+  </nav>
+
+  <div class="header">
+    <h1 class="top">CONTACT US</h1>
+  </div>
+
+  <div class="contact-container">
+    <div class="contact-form">
+      <h2>Send Us a Message</h2>
+      <form action="#" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <div class="contact-info">
+      <h2>Reach Out To Us</h2>
+      <p><strong>Address:</strong> Ignitia HQ, Sector 12, Bengaluru, India</p>
+      <p><strong>Phone:</strong> +91-XXXXX XXXXX</p>
+      <p><strong>Email:</strong> ignitia@gmail.com</p>
+      <p><strong>Support Hours:</strong> Mon - Fri, 9:00AM - 6:00PM</p>
+    </div>
+  </div>
+
+  <script>
+    const header = document.querySelector('.header');
+    const navbar = document.querySelector('.navbar');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        navbar.classList.toggle('scrolled', !entry.isIntersecting);
+      },
+      { root: null, threshold: 0.1 }
+    );
+
+    observer.observe(header);
+  </script>
+
+  <div class="footer">
+    <p>This website is made by the Ignitita Team</p>
+    <p>Contact: 91-XXXXX XXXXX</p>
+    <p>Email: ignitia@gmail.com</p>
+  </div>
+
+</body>
+</html>
