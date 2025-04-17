@@ -49,6 +49,34 @@ def mng_ev():
     return render_template('mng-ev.html', name=name)
 
 
+@app.route('/Hellskitchen')
+def hellskitchen():
+    create_table()
+    if 'id' in session:
+        try:
+            x = get_user(session['id'])
+            name = x[1]
+            session['dept'] = x[4]
+            session['phone'] = x[3]
+        except TypeError:
+            pass
+    return render_template('Hellskitchen.html', name=name)
+
+
+@app.route('/tech-ev')
+def tech_ev():
+    create_table()
+    if 'id' in session:
+        try:
+            x = get_user(session['id'])
+            name = x[1]
+            session['dept'] = x[4]
+            session['phone'] = x[3]
+        except TypeError:
+            pass
+    return render_template('tech-ev.html', name=name)
+
+
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
     alert_message = ""
