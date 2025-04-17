@@ -1,0 +1,284 @@
+<!-- Updated Homepage Code with Additional Navigation Links -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JD Times</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-image: url("BlackImage.jpg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      color: white;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      position: relative;
+    }
+
+    .nav-item {
+      margin: 0 15px;
+      transition: all 0.6s ease;
+    }
+
+    .nav-item a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 6px 12px;
+    }
+
+    .nav-item[data-side="left"],
+    .nav-item[data-side="right"] {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 2;
+    }
+
+    #nav-jdtimes a {
+      font-size: 28px;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f;
+      color: #00f;
+      text-decoration: none;
+    }
+
+    .navbar.scrolled .nav-center {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+
+    .navbar.scrolled .nav-item[data-side="left"] {
+      transform: translateX(-250px);
+    }
+
+    .navbar.scrolled .nav-item[data-side="right"] {
+      transform: translateX(250px);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.9);
+      min-width: 160px;
+      border-radius: 5px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 12px 16px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(0, 0, 255, 0.4);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .header {
+      background-color: rgba(0, 0, 255, 0.421);
+      padding: 20px;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    .top {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 85px;
+      color: white;
+      text-shadow: 0 0 10px #00f, 0 0 20px #00f;
+    }
+
+    .top2 {
+      font-size: 24px;
+      font-family: Cambria, serif;
+      font-weight: 300;
+      text-shadow: 0 0 5px #aaa;
+    }
+
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 50px 30px;
+      gap: 30px;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: rgba(0, 0, 255, 0.2);
+      border-radius: 10px;
+      padding: 20px;
+      flex-shrink: 0;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 15px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      display: block;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .content {
+      flex: 1;
+      font-size: 20px;
+      font-family: Georgia, serif;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    .content p {
+      margin-bottom: 25px;
+    }
+
+    .quote-author {
+      text-align: right;
+      font-style: italic;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.05);
+      font-size: 16px;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li class="nav-item" data-side="left"><a href="/">HOME</a></li>
+      <li class="nav-item" data-side="left"><a href="contact-us.html">CONTACT US</a></li>
+      <li class="nav-item" data-side="left"><a href="Team.html">TEAM</a></li>
+      <li class="nav-item" data-side="left"><a href="Sponsor.html">SPONSORS</a></li>
+    
+      <li class="nav-center" id="nav-jdtimes"><a href="#">IGNITIA</a></li>
+    
+      <li class="nav-item dropdown" data-side="right">
+        <a href="#">EVENTS</a>
+        <div class="dropdown-content">
+          <a href="mng-ev.html">Managerial</a>
+          <a href="tech-ev.html">Technical</a>
+          <a href="Hellskitchen.html">Hell's Kitchen</a>
+          <a href="wrkshp.html">Workshops</a>
+          <a href="./carshow.html">Car Show</a>
+        </div>
+      </li>
+      <li class="nav-item" data-side="right"><a href="Signin.html">LOGIN</a></li>
+      <li class="nav-item" data-side="right"><a href="CreateAcc.html">SIGN UP</a></li>
+    </ul>
+    
+  </nav>
+
+  <div class="header">
+    <h1 class="top">IGNITIA</h1>
+    <h2 class="top2">The World's Information Hub...And More!</h2>
+  </div>
+
+
+    <div class="content">
+      
+    </div>
+  </div>
+
+  <script>
+    const header = document.querySelector('.header');
+    const navbar = document.querySelector('.navbar');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        navbar.classList.toggle('scrolled', !entry.isIntersecting);
+      },
+      { root: null, threshold: 0.1 }
+    );
+
+    observer.observe(header);
+  </script>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+
+  <div class="footer">
+    <p>This website is made by the Ignitia Team</p>
+    <p>Contact: 91-XXXXX XXXXX</p>
+    <p>Email: ignitita@gmail.com</p>
+  </div>
+</body>
+</html>
