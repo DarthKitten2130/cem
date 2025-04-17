@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JD Times</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-image:  url({{url_for('static', filename='images/BlackImage.jpg')}});
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      height: 50px;
+    }
+
+    .nav-item {
+      margin: 0 15px;
+      transition: all 0.6s ease;
+      opacity: 1;
+    }
+
+    .nav-item a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 6px 12px;
+    }
+
+    .nav-item[data-side="left"],
+    .nav-item[data-side="right"] {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 2;
+    }
+
+    #nav-jdtimes a {
+      font-size: 28px;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f;
+      color: #00f;
+      text-decoration: none;
+    }
+
+    .navbar.scrolled .nav-center {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+
+    .navbar.scrolled .nav-item[data-side="left"] {
+      transform: translateX(-250px);
+    }
+
+    .navbar.scrolled .nav-item[data-side="right"] {
+      transform: translateX(250px);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.8);
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(0, 0, 255, 0.4);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .header {
+      width: 100%;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 255, 0.421);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .top {
+      font-family: 'Courier New', Courier, monospace;
+      color: white;
+      font-size: 85px;
+      text-shadow: 0 0 10px #00f, 0 0 20px #00f;
+      margin-bottom: 10px;
+    }
+
+    .top2 {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      color: white;
+      font-size: 24px;
+      font-weight: 300;
+      text-shadow: 0 0 5px #aaa;
+    }
+
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 50px 30px;
+      gap: 30px;
+    }
+
+    .field {
+      flex: 1 1 250px;
+      display: flex;
+      text-align: center;
+    }
+
+    fieldset {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid #00f;
+      border-radius: 10px;
+    }
+
+    .speech {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .photo img {
+      width: 200px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .person h1 {
+      margin: 10px 0 5px;
+    }
+
+    .person h3 {
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.05);
+      font-size: 16px;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li class="nav-item" data-side="left"><a href="home.html">HOME</a></li>
+      <li class="nav-item" data-side="left"><a href="contact-us.html">CONTACT US</a></li>
+      <li class="nav-item" data-side="left"><a href="Team.html">TEAM</a></li>
+      <li class="nav-item" data-side="left"><a href="Sponsor.html">SPONSORS</a></li>
+    
+      <li class="nav-center" id="nav-jdtimes"><a href="#">IGNITIA</a></li>
+    
+      <li class="nav-item dropdown" data-side="right">
+        <a href="#">EVENTS</a>
+        <div class="dropdown-content">
+          <a href="mng-ev.html">Managerial</a>
+          <a href="tech-ev.html">Technical</a>
+          <a href="Hellskitchen.html">Hell's Kitchen</a>
+          <a href="wrkshp.html">Workshops</a>
+          <a href="carshow.html">Car Show</a>
+        </div>
+      </li>
+      <li class="nav-item" data-side="right"><a href="Signin.html">LOGIN</a></li>
+      <li class="nav-item" data-side="right"><a href="CreateAcc.html">SIGN UP</a></li>
+    </ul>
+  </nav>
+
+  <div class="header">
+    <h1 class="top">OUR TEAM</h1>
+    <h2 class="top2">Meet the backbone of the website</h2>
+  </div>
+
+  <div class="about-section">
+    <div class="field">
+      <fieldset>
+        <legend>Front-End Developer</legend>
+        <div class="speech">
+          <div class="photo"><img src="Black Screen.png" alt="Tech Head"></div>
+          <div class="person">
+            <h1>Jerome Amuthan</h1>
+            <h3>Creator of the aesthetics and structure to the website</h3>
+            
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="field">
+      <fieldset>
+        <legend>Front-End Developer</legend>
+        <div class="speech">
+          <div class="photo"><img src="Black Screen.png" alt="Publicity Head"></div>
+          <div class="person">
+            <h1>Jake Thomas</h1>
+            <h3>Creator of the aesthetics and structureto the website</h3>
+            
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="field">
+      <fieldset>
+        <legend>Front-End Developer</legend>
+        <div class="speech">
+          <div class="photo"><img src="Black Screen.png" alt="Deputy Head"></div>
+          <div class="person">
+            <h1>Basim</h1>
+            <h3>Creator of the aesthetics and structure to the website</h3>
+            
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="field">
+      <fieldset>
+        <legend>Back-End Developer</legend>
+        <div class="speech">
+          <div class="photo"><img src="{{url_for('static',filename='images/sathvik.jpeg')}}" alt="Aesthetic Designer"></div>
+          <div class="person">
+            <h1>Sathvik Mulukutla</h1>
+            <h3>Creator of all the Back-End features for the website</h3>
+            
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <script>
+    const header = document.querySelector('.header');
+    const navbar = document.querySelector('.navbar');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        navbar.classList.toggle('scrolled', !entry.isIntersecting);
+      },
+      { root: null, threshold: 0.1 }
+    );
+
+    observer.observe(header);
+  </script>
+
+</body>
+</html>

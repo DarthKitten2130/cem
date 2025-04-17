@@ -63,6 +63,20 @@ def hellskitchen():
     return render_template('Hellskitchen.html', name=name)
 
 
+@app.route('/wrkshp')
+def wrkshp():
+    create_table()
+    if 'id' in session:
+        try:
+            x = get_user(session['id'])
+            name = x[1]
+            session['dept'] = x[4]
+            session['phone'] = x[3]
+        except TypeError:
+            pass
+    return render_template('wrkshp.html', name=name)
+
+
 @app.route('/tech-ev')
 def tech_ev():
     create_table()
@@ -75,6 +89,34 @@ def tech_ev():
         except TypeError:
             pass
     return render_template('tech-ev.html', name=name)
+
+
+@app.route('/Sponsor')
+def sponsor():
+    create_table()
+    if 'id' in session:
+        try:
+            x = get_user(session['id'])
+            name = x[1]
+            session['dept'] = x[4]
+            session['phone'] = x[3]
+        except TypeError:
+            pass
+    return render_template('Sponsor.html', name=name)
+
+
+@app.route('/Team')
+def team():
+    create_table()
+    if 'id' in session:
+        try:
+            x = get_user(session['id'])
+            name = x[1]
+            session['dept'] = x[4]
+            session['phone'] = x[3]
+        except TypeError:
+            pass
+    return render_template('Team.html', name=name)
 
 
 @app.route('/signin', methods=['GET', 'POST'])
