@@ -18,7 +18,35 @@ def home():
         except TypeError:
             pass
     session['name'] = name
-    return render_template('index.html', name=name)
+    return render_template('home.html', name=name)
+
+
+@app.route('/carshow')
+def carshow():
+    create_table()
+    if 'id' in session:
+        try:
+            x = get_user(session['id'])
+            name = x[1]
+            session['dept'] = x[4]
+            session['phone'] = x[3]
+        except TypeError:
+            pass
+    return render_template('carshow.html', name=name)
+
+
+@app.route('/mng-ev')
+def mng_ev():
+    create_table()
+    if 'id' in session:
+        try:
+            x = get_user(session['id'])
+            name = x[1]
+            session['dept'] = x[4]
+            session['phone'] = x[3]
+        except TypeError:
+            pass
+    return render_template('mng-ev.html', name=name)
 
 
 @app.route('/signin', methods=['GET', 'POST'])
