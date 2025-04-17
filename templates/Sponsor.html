@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sponsors - JD Times</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: white;
+      background-image:  url({{url_for('static', filename='images/BlackImage.jpg')}});
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+    }
+
+    .nav-item {
+      margin: 0 15px;
+      position: relative;
+    }
+
+    .nav-item a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+#nav-jdtimes a {
+  font-size: 28px;
+  font-family: 'Courier New', Courier, monospace;
+  text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f;
+  color: #00f;
+  text-decoration: none;
+}
+
+.navbar.scrolled .nav-center {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+.navbar.scrolled .nav-item[data-side="left"] {
+  transform: translateX(-250px);
+  transition: all 0.5s ease;
+}
+
+.navbar.scrolled .nav-item[data-side="right"] {
+  transform: translateX(250px);
+  transition: all 0.5s ease;
+}
+
+
+    .header {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: rgba(0, 0, 255, 0.4);
+      border-radius: 5px;
+    }
+
+    .header h1 {
+      font-size: 60px;
+      text-shadow: 0 0 10px #00f, 0 0 20px #00f;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .sponsors-wrapper {
+      overflow: hidden;
+      position: relative;
+      height: 200px;
+      margin-top: 50px;
+    }
+
+    .sponsors-track {
+      display: flex;
+      gap: 60px;
+      padding: 20px;
+      position: absolute;
+      animation: scrollSponsors 30s linear infinite;
+    }
+
+    .sponsor {
+      flex: 0 0 auto;
+      width: 150px;
+      height: 150px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .sponsor img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+    }
+
+    @keyframes scrollSponsors {
+      from { left: 100%; }
+      to { left: -100%; }
+    }
+
+    .quote-section {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      background-color: rgba(0, 0, 255, 0.4);
+      border-radius: 5px;
+    }
+
+    .quote-section p {
+      font-size: 24px;
+      font-style: italic;
+      color: white;
+    }
+
+    .quote-section small {
+      display: block;
+      margin-top: 10px;
+      font-size: 18px;
+      color: white;
+    }
+
+    /* Dropdown Styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.8);
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(0, 0, 255, 0.4);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li class="nav-item" data-side="left"><a href="home">HOME</a></li>
+      <li class="nav-item" data-side="left"><a href="contact-us">CONTACT US</a></li>
+      <li class="nav-item" data-side="left"><a href="Team">TEAM</a></li>
+      <li class="nav-item" data-side="left"><a href="Sponsor">SPONSORS</a></li>
+  
+      <li class="nav-center" id="nav-jdtimes"><a href="#">IGNITIA</a></li>
+  
+      <li class="nav-item dropdown" data-side="right">
+        <a href="#">EVENTS</a>
+        <div class="dropdown-content">
+          <a href="mng-ev">Managerial</a>
+          <a href="tech-ev">Technical</a>
+          <a href="Hellskitchen">Hell's Kitchen</a>
+          <a href="wrkshp">Workshops</a>
+          <a href="carshow">Car Show</a>
+        </div>
+      </li>
+      <li class="nav-item" data-side="right"><a href="Signin">LOGIN</a></li>
+      <li class="nav-item" data-side="right"><a href="CreateAcc">SIGN UP</a></li>
+    </ul>
+  </nav>
+  
+
+  <div class="header">
+    <h1>OUR SPONSORS</h1>
+  </div>
+
+  <div class="sponsors-wrapper">
+    <div class="sponsors-track">
+      <div class="sponsor"><img src="{{url_for('static',filename='images/Nvidia.png')}}" alt="Sponsor 1"></div>
+      <div class="sponsor"><img src="{{url_for('static',filename='images/Cisco.png')}}" alt="Sponsor 2"></div>
+      <div class="sponsor"><img src="{{url_for('static',filename='images/Redbull.webp')}}" alt="Sponsor 3"></div>
+      <div class="sponsor"><img src="{{url_for('static',filename='images/BMW.jpeg')}}" alt="Sponsor 4"></div>
+      <div class="sponsor"><img src="{{url_for('static',filename='images/paypal.png')}}" alt="Sponsor 5"></div>
+      <div class="sponsor"><img src="{{url_for('static',filename='images/Micro.jpg')}}" alt="Sponsor 6"></div>
+      <div class="sponsor"><img src="{{url_for('static',filename='images/Goldman.jpeg')}}" alt="Sponsor 7"></div>
+    </div>
+  </div>
+
+  <script>
+    const header = document.querySelector('.header');
+    const navbar = document.querySelector('.navbar');
+  
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        navbar.classList.toggle('scrolled', !entry.isIntersecting);
+      },
+      { root: null, threshold: 0.1 }
+    );
+  
+    observer.observe(header);
+  </script>
+  
+
+  <!-- Quote Section -->
+  <div class="quote-section">
+    <p>"Alone we can do so little; together we can do so much."</p>
+    <small>- Helen Keller</small>
+  </div>
+
+</body>
+</html>
