@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Technical Events</title>
+  <title>Create Account</title>
   <style>
     body {
-      background-image: url({{url_for('static', filename='images/BlackImage.jpg')}});
+      background-image:  url({{url_for('static', filename='images/BlackImage.jpg')}});
       background-repeat: no-repeat;
       background-attachment: fixed;
       color: white;
@@ -65,9 +65,9 @@
       font-family: 'Courier New', Courier, monospace;
       text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f;
       color: #00f;
-      text-decoration: none;
     }
 
+    /* Scrolled state */
     .navbar.scrolled .nav-center {
       transform: translateX(-50%) scale(1);
       opacity: 1;
@@ -81,6 +81,7 @@
       transform: translateX(250px);
     }
 
+    /* Dropdown Styles */
     .dropdown {
       position: relative;
       display: inline-block;
@@ -110,6 +111,61 @@
       display: block;
     }
 
+    form {
+      margin: 100px auto;
+      width: 60%;
+      max-width: 600px;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 255, 0.3);
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-size: 18px;
+    }
+
+    form input,
+    form select {
+      width: 95.5%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 5px;
+      border: 2px solid #4A90E2;
+      font-size: 16px;
+      background-color: rgba(0, 0, 0, 0.6);  /* Dark background */
+      color: white;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    form input:hover,
+    form input:focus,
+    form select:hover,
+    form select:focus {
+      background-color: rgba(0, 0, 0, 0.8);
+      border-color: #00f;
+      box-shadow: 0 0 5px rgba(0, 0, 255, 0.7); 
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      background-color: blue;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: darkblue;
+    }
+
+    p a {
+      color: #00f;
+      text-decoration: underline;
+    }
+
     .header {
       width: 100%;
       border-radius: 5px;
@@ -136,115 +192,68 @@
       font-weight: 300;
       text-shadow: 0 0 5px #aaa;
     }
-
-    .events-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 40px;
-    }
-
-    fieldset {
-      width: 250px;
-      background-color: rgba(255, 255, 255, 0.05);
-      border: 2px solid #4A90E2;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 255, 0.3);
-      padding: 20px;
-      text-align: center;
-    }
-
-    fieldset img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-
-    fieldset h3 {
-      margin-top: 0;
-      font-size: 22px;
-      color: #00f;
-    }
-
-    fieldset p {
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-
-    fieldset button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: blue;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    fieldset button:hover {
-      background-color: darkblue;
-    }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <ul class="nav-list">
-      <li class="nav-item" data-side="left"><a href="/">HOME</a></li>
-      <li class="nav-item" data-side="left"><a href="contact-us">CONTACT US</a></li>
-      <li class="nav-item" data-side="left"><a href="Team">TEAM</a></li>
-      <li class="nav-item" data-side="left"><a href="Sponsor">SPONSORS</a></li>
-    
-      <li class="nav-center" id="nav-jdtimes"><a href="#">IGNITIA</a></li>
-    
+      <li class="nav-item" data-side="left"><a href="home.html">HOME</a></li>
+      <li class="nav-item" data-side="left"><a href="contact-us.html">CONTACT US</a></li>
+      <li class="nav-item" data-side="left"><a href="Team.html">TEAM</a></li>
+      <li class="nav-item" data-side="left"><a href="Sponsor.html">SPONSORS</a></li>
       <li class="nav-item dropdown" data-side="right">
         <a href="#">EVENTS</a>
         <div class="dropdown-content">
-          <a href="mng-ev">Managerial</a>
-          <a href="tech-ev">Technical</a>
-          <a href="Hellskitchen">Hell's Kitchen</a>
-          <a href="wrkshp">Workshops</a>
-          <a href="carshow">Car Show</a>
+          <a href="mng-ev.html">Managerial</a>
+          <a href="tech-ev.html">Technical</a>
+          <a href="Hellskitchen.html">Hell's Kitchen</a>
+          <a href="wrkshp.html">Workshops</a>
+          <a href="carshow.html">Car Show</a>
         </div>
       </li>
-      <li class="nav-item" data-side="right"><a href="Signin.html">LOGIN</a></li>
+      <li class="nav-item nav-center" id="nav-jdtimes"><a href="#">IGNTITA</a></li>
+      <li class="nav-item" data-side="right"><a href="SignIn.html">LOGIN</a></li>
       <li class="nav-item" data-side="right"><a href="CreateAcc.html">SIGN UP</a></li>
     </ul>
   </nav>
 
   <div class="header">
-    <h1 class="top">Technical Events</h1>
-    <h2 class="top2">Find your forte, put your tech goggles on</h2>
+    <h1 class="top">IGNITIA</h1>
+    <h2 class="top2">Find your events, fight for the win</h2>
   </div>
 
-  <div class="events-container">
-    <fieldset>
-      <img src="{{url_for('static',filename='images/techquiz.png')}}" alt="STech Quiz Showdown Image">
-      <h3>Tech Quiz Showdown</h3>
-      <p>A rapid-fire quiz on programming, tech trends, gadgets, and logic puzzles. </p>
-      <button>Register</button>
-    </fieldset>
-    <fieldset>
-      <img src="{{url_for('static',filename='images/roborace.jpg')}}" alt="Robo race Image">
-      <h3>Robo race</h3>
-      <p>Build fast and strong robots and first to finish the obstacle course wins !!</p>
-      <button>Register</button>
-    </fieldset>
-    <fieldset>
-      <img src="{{url_for('static',filename='images/code_glad.png')}}" alt="Code Gladiators Image">
-      <h3>Code Gladiators</h3>
-      <p>A fast-paced coding battle where participants solve algorithmic challenges under time pressure.</p>
-      <button>Register</button>
-    </fieldset>
-    <fieldset>
-      <img src="{{url_for('static',filename='images/ctf.jpg')}}" alt="Capture the Flag Image">
-      <h3>Capture the Flag (CTF)</h3>
-      <p>A cybersecurity challenge where participants find and exploit vulnerabilities to "capture flags".</p>
-      <button>Register</button>
-    </fieldset>
-  </div>
+  <form method='post'>
+    <label for="id">Enter your college ID</label>
+    <input type="text" id="id" name="id" required />
+
+    <label for="name">Enter your name</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Enter your email</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="phone">Enter your phone number</label>
+    <input type="tel" id="phone" name="phone" required />
+
+    <label for="branch">Enter your branch</label>
+    <select name="branch" id="branch" required>
+      <option value="cs">Computer Science</option>
+      <option value="ai">Artificial Intelligence</option>
+      <option value="ec">Electronics and Communications Engineering</option>
+      <option value="e e">Electrical Engineering</option>
+      <option value="me">Mechanical Engineering</option>
+      <option value="ce">Civil Engineering</option>
+      <option value="ch">Chemical Engineering</option>
+      <option value="msc">MSC</option>
+    </select>
+
+    <label for="password">Create a password</label>
+    <input type="password" name="password" id="password" required />
+
+    <input type="submit" name="submit" id="submit" value="Create Account" />
+  </form>
+
+  <p style="text-align: center; margin-top: 20px;">Already have an account? <a href="SignIn.html">Sign In</a></p>
 
   <script>
     const header = document.querySelector('.header');

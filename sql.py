@@ -105,21 +105,3 @@ def get_reg(event_id):
     ''')
     events = cursor.fetchall()
     return events
-
-
-def insert_event(name, date, time, location, description, dept, type, contact, image):
-    # Insert an event
-    cursor.execute(f'''
-        INSERT INTO events (name, date, time, location, description, dept, type, contact,image)
-        VALUES ('{name}', '{date}', '{time}', '{location}', '{description}', '{dept}', '{type}', '{contact}','{image}')
-    ''')
-    sqliteConnection.commit()
-
-
-def get_event(event_id):
-    # Get an event
-    cursor.execute(f'''
-        SELECT * FROM events WHERE id = "{event_id}"
-    ''')
-    event = cursor.fetchone()
-    return event
