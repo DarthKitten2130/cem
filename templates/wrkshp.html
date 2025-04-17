@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Workshops</title>
+  <style>
+    body {
+      background-image: url({{url_for('static', filename='images/BlackImage.jpg')}});
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      height: 50px;
+    }
+
+    .nav-item {
+      margin: 0 15px;
+      transition: all 0.6s ease;
+    }
+
+    .nav-item a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 6px 12px;
+    }
+
+    .nav-item[data-side="left"],
+    .nav-item[data-side="right"] {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 2;
+    }
+
+    #nav-jdtimes a {
+      font-size: 28px;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f;
+      color: #00f;
+      text-decoration: none;
+    }
+
+    .navbar.scrolled .nav-center {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+
+    .navbar.scrolled .nav-item[data-side="left"] {
+      transform: translateX(-250px);
+    }
+
+    .navbar.scrolled .nav-item[data-side="right"] {
+      transform: translateX(250px);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.8);
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(0, 0, 255, 0.4);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .header {
+      width: 100%;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 255, 0.421);
+      height: auto;
+      padding-left: 20px;
+      padding-top: 3px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+
+    .top {
+      font-family: 'Courier New', Courier, monospace;
+      color: white;
+      font-size: 85px;
+      text-shadow: 0 0 10px #00f, 0 0 20px #00f;
+      margin-bottom: 10px;
+    }
+
+    .top2 {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      color: white;
+      font-size: 24px;
+      font-weight: 300;
+      text-shadow: 0 0 5px #aaa;
+    }
+
+    .events-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+    }
+
+    fieldset {
+      width: 250px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 2px solid #4A90E2;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 255, 0.3);
+      padding: 20px;
+      text-align: center;
+    }
+
+    fieldset img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    fieldset h3 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #00f;
+    }
+
+    fieldset p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    fieldset button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    fieldset button:hover {
+      background-color: darkblue;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li class="nav-item" data-side="left"><a href="home.html">HOME</a></li>
+      <li class="nav-item" data-side="left"><a href="contact-us.html">CONTACT US</a></li>
+      <li class="nav-item" data-side="left"><a href="Team.html">TEAM</a></li>
+      <li class="nav-item" data-side="left"><a href="Sponsor.html">SPONSORS</a></li>
+    
+      <li class="nav-center" id="nav-jdtimes"><a href="#">IGNITIA</a></li>
+    
+      <li class="nav-item dropdown" data-side="right">
+        <a href="#">EVENTS</a>
+        <div class="dropdown-content">
+          <a href="mng-ev.html">Managerial</a>
+          <a href="tech-ev.html">Technical</a>
+          <a href="Hellskitchen.html">Hell's Kitchen</a>
+          <a href="wrkshp.html">Workshops</a>
+          <a href="carshow.html">Car Show</a>
+        </div>
+      </li>
+      <li class="nav-item" data-side="right"><a href="Signin.html">LOGIN</a></li>
+      <li class="nav-item" data-side="right"><a href="CreateAcc.html">SIGN UP</a></li>
+    </ul>
+  </nav>
+
+  <div class="header">
+    <h1 class="top">Workshops</h1>
+    <h2 class="top2">Keep the universe inside your brain growing</h2>
+  </div>
+
+  <div class="events-container">
+    <fieldset>
+      <img src="{{url_for('static',filename='images/aiml.png')}}" alt="AIML Image">
+      <h3>AI/ML Workshop</h3>
+      <p>A workshop, exploring the depth and status of AI, and the way AI is developed using Machine Learning</p>
+      <button>Register</button>
+    </fieldset>
+    <fieldset>
+      <img src="{{url_for('static',filename='images/webd.jpg')}}" alt="KotW Image">
+      <h3>King Of The Web Workshop</h3>
+      <p>A workshop on web developement and latest website-development trends, in the market</p>
+      <button>Register</button>
+    </fieldset>
+    <fieldset>
+      <img src="{{url_for('static',filename='images/datascience.jpg')}}" alt="DSW Image">
+      <h3>Data Science Workshop</h3>
+      <p>A workshop on the fascinating world of Data Science and Analysis, and its importance in the modern world</p>
+      <button>Register</button>
+    </fieldset>
+    <fieldset>
+      <img src="{{url_for('static',filename='images/financial.jpg')}}" alt="FinancialAdvisor Image">
+      <h3>Financial Advisor Workshop</h3>
+      <p>A workshop, focused on today's challenges to financial efficiency, and planning for better investing and budgeting</p>
+      <button>Register</button>
+    </fieldset>
+    <fieldset>
+        <img src="{{url_for('static',filename='images/prompt.jpeg')}}" alt="Prompt Workshop Image">
+        <h3>Prompt Engineering Workshop</h3>
+        <p>A workshop, exploring the depths of prompt-based Generative AIs like ChatGPT, and how to optimize it for everyday uses</p>
+        <button>Register</button>
+      </fieldset>
+      <fieldset>
+        <img src="{{url_for('static',filename='images/marketing.jpg')}}" alt="MaB Image">
+        <h3>Power of Marketing Workshop</h3>
+        <p>A workshop looking into current marketing trends and influences on human lives, and how, and why it works</p>
+        <button>Register</button>
+      </fieldset>
+      <fieldset>
+        <img src="{{url_for('static',filename='images/vr.jpeg')}}" alt="VR Image">
+        <h3>A Whole New World Workshop</h3>
+        <p>A workshop, simulating the mechanics of Virtual Reality, and its effects, pros and cons on the real world and lives.</p>
+        <button>Register</button>
+      </fieldset>
+      <fieldset>
+        <img src="{{url_for('static',filename='images/robotics.jpg')}}" alt="Robotics Image">
+        <h3>Robot Ravager Workshop</h3>
+        <p>A workshop, looking at different robotics hacks and styles of robots, with hands-on experience on making one</p>
+        <button>Register</button>
+      </fieldset>
+  </div>
+
+  <script>
+    const header = document.querySelector('.header');
+    const navbar = document.querySelector('.navbar');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        navbar.classList.toggle('scrolled', !entry.isIntersecting);
+      },
+      {
+        root: null,
+        threshold: 0.1
+      }
+    );
+
+    observer.observe(header);
+  </script>
+</body>
+</html>
