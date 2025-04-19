@@ -90,6 +90,15 @@ def create_account():
     return render_template('CreateAcc.html')
 
 
+@app.route('/event/<event_id>', methods=['GET', 'POST'])
+def event(event_id):
+    if request.method == 'POST':
+        insert_reg(event_id, session['id'])
+        return redirect('/')
+
+    return render_template('reg.html', event=event)
+
+
 @app.route('/signout')
 def signout():
     session.pop('id', None)

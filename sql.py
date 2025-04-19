@@ -19,26 +19,45 @@ def create_table():
     ''')
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS events (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            date TEXT NOT NULL,
-            time TEXT,
-            location TEXT NOT NULL,
-            description TEXT,
-            dept TEXT,
-            type TEXT NOT NULL,
-            contact TEXT,
-            image TEXT,
-            CONSTRAINT fk_contact FOREIGN KEY (contact) REFERENCES users(phone)
+            id TEXT PRIMARY KEY,
+            name TEXT NOT NULL
             );''')
     cursor.execute('''         
         CREATE TABLE IF NOT EXISTS reg (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            event_id INTEGER NOT NULL,
+            event_id TEXT NOT NULL,
             user_id TEXT NOT NULL,
             FOREIGN KEY (event_id) REFERENCES events(id),
             FOREIGN KEY (user_id) REFERENCES users(id)
         );''')
+    sqliteConnection.commit()
+
+
+def insert_event():
+    cursor.execute('''
+                   
+                   INSERT INTO events (id, name) VALUES 
+
+                   ('aiml','AI/ML Workshop'),
+                   ('kingoftheweb','King of the Web Workshop'),
+                   ('ds','Data Science Workshop'),
+                   ('finadv','Financial Advisor Workshop'),
+                   ('promptengg','Prompt Engineering Workshop'),
+                   ('marketing','Power of Marketing Workshop'),
+                   ('wnw','A Whole New World Workshop'),
+                   ('rr','Robot Ravager Workshop'),
+                   ('techquizshowdown','Tech Quiz Showdown'),
+                   ('roborace','Robo Race'),
+                   ('codegladiators','Code Gladiators'),
+                   ('ctf','Capture the Flag (CTF)'),
+                   ('startuppitch','Startup Pitch'),
+                   ('bestmanager','Best Manager'),
+                   ('adzap','AdZap'),
+                   ('bizquiz','Biz Quiz'),
+                   ('wallstreetwars','Wall Street Wars'),
+                   ('dessertduel','Dessert Duel'),
+                   ('maincoursemadness','Main Course Madness'),
+                   ('startershowdown','Starter Showdown');''')
     sqliteConnection.commit()
 
 
