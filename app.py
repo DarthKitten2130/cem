@@ -46,7 +46,7 @@ def team():
     return render_template('Team.html')
 
 
-@app.route('/contact')
+@app.route('/contact-us')
 def contact():
     return render_template('contact-us.html')
 
