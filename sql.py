@@ -117,10 +117,10 @@ def insert_reg(event_id, user_id):
     sqliteConnection.commit()
 
 
-def get_reg(event_id):
+def get_reg(user_id):
     # Get all events
     cursor.execute(f'''
-        SELECT * FROM reg WHERE event_id = "{event_id}"
+        SELECT name FROM events,reg where user_id = "{user_id}" and events.id = reg.event_id;
     ''')
     events = cursor.fetchall()
     return events

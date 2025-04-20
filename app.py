@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, templating
+from flask import Flask, render_template, request, redirect, url_for, session
 from sql import *
 
 app = Flask(__name__)
@@ -69,7 +69,7 @@ def signin():
                 session['password'] = request.form['password']
                 return redirect('/')
 
-    return templating.render_template("SignIn.html", message=alert_message)
+    return render_template("SignIn.html", message=alert_message)
 
 
 @app.route('/CreateAcc', methods=['GET', 'POST'])
@@ -92,9 +92,7 @@ def create_account():
 
 @app.route('/event/<event_id>', methods=['GET', 'POST'])
 def event(event_id):
-    if request.method == 'POST':
-        insert_reg(event_id, session['id'])
-        return redirect('/')
+    insert_reg(event_id, session['id'])
 
     return render_template('reg.html', event=event)
 
@@ -104,6 +102,25 @@ def signout():
     session.pop('id', None)
     session.pop('password', None)
     return redirect('/')
+
+
+@app.route('/profile')
+def profile():
+    if 'id' in session:
+        user = get_user(session['id'])
+        return render_template('profile.html', user=user)
+    else:
+        return render_template('profile.html', user=None)
+
+
+@app.route('/events')
+def events():
+    if 'id' in session:
+        events = get_reg(session['id'])
+        print(events)
+        return render_template('events.html', events=events)
+    else:
+        return render_template('events.html', events=get_events())
 
 
 if __name__ == '__main__':
