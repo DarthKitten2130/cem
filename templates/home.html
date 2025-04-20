@@ -1,9 +1,7 @@
-<!-- Updated Homepage Code with Additional Navigation Links -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>JD Times</title>
+  <title>Ignitia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -134,70 +132,39 @@
       text-shadow: 0 0 5px #aaa;
     }
 
-    .about-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 50px 30px;
-      gap: 30px;
-    }
-
-    .sidebar {
-      width: 220px;
-      background-color: rgba(0, 0, 255, 0.2);
-      border-radius: 10px;
-      padding: 20px;
-      flex-shrink: 0;
-    }
-
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sidebar li {
-      margin-bottom: 15px;
-    }
-
-    .sidebar a {
-      text-decoration: none;
-      color: white;
-      font-size: 18px;
-      display: block;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: background 0.3s ease;
-    }
-
-    .sidebar a:hover {
-      background-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .content {
-      flex: 1;
-      font-size: 20px;
-      font-family: Georgia, serif;
-      line-height: 1.6;
-      max-width: 800px;
-    }
-
-    .content p {
-      margin-bottom: 25px;
-    }
-
-    .quote-author {
-      text-align: right;
-      font-style: italic;
-      font-weight: bold;
-      margin-top: 40px;
-    }
-
     .footer {
       text-align: center;
       padding: 20px;
       background-color: rgba(255,255,255,0.05);
       font-size: 16px;
+      border-top: 1px solid #333;
+    }
+
+    fieldset {
+      margin: 0 auto;
+      width: 90%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    legend {
+      color: blue;
+      font-size: 20px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: bold;
+    }
+    table, td, tr {
+      border: 0px;
+      padding: 10px;
+      font-size: 34px;
+      color: lightblue;
+    }
+    .linkto {
+      font-size: 20px;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.05);
+      font-size: 20px;
       border-top: 1px solid #333;
     }
   </style>
@@ -225,21 +192,51 @@
       </li>
       <li class="nav-item" data-side="right"><a href="Signin">LOGIN</a></li>
       <li class="nav-item" data-side="right"><a href="CreateAcc">SIGN UP</a></li>
-      <li class="nav-item" data-side="right"><a href="profile">PROFILE</a></li>
     </ul>
     
   </nav>
 
   <div class="header">
     <h1 class="top">IGNITIA</h1>
-    <h2 class="top2">The World's Information Hub...And More!</h2>
+    <h2 class="top2">Find your event, fight for the win!</h2>
   </div>
 
+  <br><br>
 
-    <div class="content">
-      
-    </div>
-  </div>
+  <fieldset>
+    <legend>All Your Events in one place</legend>
+    <table>
+      <tr>
+        <td>Explore from a variety of events, of different categories, from events that challenge your technical skills, to more creative events that challenge critical thinking, situational anaylsis and performance arts.</td>
+        <td><img src="{{url_for('static', filename='images/BlackImage.jpg')}}" width="200px" height="200px"></td>
+      </tr>
+    </table>
+  </fieldset>
+
+  <br>
+  <br>
+  <fieldset>
+    <legend>Login to participate and collect your wins</legend>
+    <table>
+      <tr>
+        <td><img src="{{url_for('static', filename='images/Black_Screen.png')}}" width="200px" height="200px"></td>
+        <td>Login to join the incoming community, to register for events and to collect all digital certificates and tokens for your wins, buffing your resume and impressing friends and interviewers alike.<br><p class="linkto"><a href="CreateAcc">Click here to start making an account -></a></p></td>
+      </tr>
+    </table>
+  </fieldset>
+
+  <br>
+  <br>
+
+  <fieldset>
+    <legend style="color: red;">Smoke your way through the delicious aisle</legend>
+    <table>
+      <tr>
+        <td style="color: lightpink;">The newest event, Hell's Kitchen is here! Aimed at challenging your culinary skills, get ready to fight other master chefs, in a multitude of battles, where you show off your best and most delicious culinary offering.</td>
+        <td><img src="newfire.jpg" width="200px" height="200px"></td>
+      </tr>
+    </table>
+  </fieldset>
 
   <script>
     const header = document.querySelector('.header');
@@ -254,27 +251,9 @@
 
     observer.observe(header);
   </script>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
+
+  <br>
+  <br>
 
   <div class="footer">
     <p>This website is made by the Ignitia Team</p>
