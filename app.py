@@ -51,7 +51,7 @@ def contact():
     return render_template('contact-us.html')
 
 
-@app.route('/Signin', methods=['GET', 'POST'])
+@app.route('/SignIn', methods=['GET', 'POST'])
 def signin():
     alert_message = ""
     if request.method == 'POST':
@@ -85,7 +85,7 @@ def create_account():
 
         insert_user(id, name, email, phone, branch, password)
 
-        return redirect(url_for('Signin'))
+        return redirect(url_for('SignIn'))
 
     return render_template('CreateAcc.html')
 
