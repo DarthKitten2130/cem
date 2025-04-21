@@ -85,7 +85,7 @@ def create_account():
 
         insert_user(id, name, email, phone, branch, password)
 
-        return redirect(url_for('SignIn'))
+        return redirect('/SignIn')
 
     return render_template('CreateAcc.html')
 
