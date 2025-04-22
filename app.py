@@ -46,8 +46,13 @@ def team():
     return render_template('Team.html')
 
 
-@app.route('/contact-us')
+@app.route('/contact-us', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        id = session['id']
+        message = request.form['message']
+        insert_feedback(id, message)
+
     return render_template('contact-us.html')
 
 

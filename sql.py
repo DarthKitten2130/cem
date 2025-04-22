@@ -5,7 +5,6 @@ cursor = sqliteConnection.cursor()
 
 
 def create_table():
-    # Create a table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id TEXT PRIMARY KEY,
@@ -30,6 +29,11 @@ def create_table():
             FOREIGN KEY (event_id) REFERENCES events(id),
             FOREIGN KEY (user_id) REFERENCES users(id)
         );''')
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS feedback (
+                   id TEXT PRIMARY KEY,
+                   message TEXT NOT NULL);''')
     sqliteConnection.commit()
 
 
@@ -124,3 +128,11 @@ def get_reg(user_id):
     ''')
     events = cursor.fetchall()
     return events
+
+
+def insert_feedback(id, message):
+    cursor.execute(f'''
+        INSERT INTO feedback (id, message)
+        VALUES ('{id}', '{message}')
+    ''')
+    sqliteConnection.commit()
