@@ -32,7 +32,7 @@ def create_table():
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS feedback (
-                   id TEXT PRIMARY KEY,
+                   id TEXT,
                    message TEXT NOT NULL);''')
     sqliteConnection.commit()
 
